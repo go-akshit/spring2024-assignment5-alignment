@@ -8,6 +8,10 @@ import torch
 from torch.utils.data import Dataset
 from transformers import PreTrainedTokenizerBase
 
+import sys
+sys.path.insert(0, './cs336_alignment')
+from baseline_eval import parse_mmlu_response 
+
 
 def get_packed_sft_dataset(
     tokenizer: PreTrainedTokenizerBase,
@@ -85,7 +89,8 @@ def run_parse_mmlu_response(
         str (one of "A", "B", "C", or "D") if the model output can be parsed into a prediction,
         else None.
     """
-    raise NotImplementedError
+    #raise NotImplementedError
+    return parse_mmlu_response(mmlu_example, model_output)
 
 
 def run_parse_gsm8k_response(
