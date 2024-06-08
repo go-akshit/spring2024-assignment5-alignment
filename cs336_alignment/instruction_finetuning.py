@@ -112,10 +112,13 @@ def train_finetuning(args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
 
     train_dataset = finetuning_dataset(tokenizer, args.train_dataset_path, args.seq_length, args.shuffle)
+    logger.info(f"CS336-Assn5: Training dataset loaded from {args.train_dataset_path}")
     train_dataloader = get_dataloader(train_dataset, args.batch_size, args.shuffle)
     test_dataset = finetuning_dataset(tokenizer, args.test_dataset_path, args.seq_length, args.shuffle)
+    logger.info(f"CS336-Assn5: Test dataset loaded from {args.test_dataset_path}")
     test_dataloader = get_dataloader(test_dataset, args.batch_size, args.shuffle)
 
+    logger.info(f"CS336-Assn5: Training started")
     for epoch in range(args.epochs):
         for idx, batch in enumerate(tqdm(train_dataloader, desc="Training Epoch Progress")):
             total_iter = epoch * len(train_dataloader) + idx
