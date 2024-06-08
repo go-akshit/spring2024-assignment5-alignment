@@ -9,7 +9,7 @@ import logging
 import argparse
 import gzip
 from memory_profiler import profile
-import gc
+import wandb
 from tqdm import tqdm
 
 logger = logging.getLogger(__name__)
@@ -147,9 +147,11 @@ def train_finetuning(args):
                 optimizer.zero_grad()
             if (idx + 1) % (args.gradient_accumulation_steps * 10) == 0:
                 logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, train_loss: {loss.item()}, LR: {lr}")
+                wandb.log({"train_loss": loss.item(), "lr": lr, "epoch": epoch, "iteration": idx})
             if((idx + 1) % args.eval_steps == 0):
                 test_loss = estimate_test_loss(model, test_dataloader, device)
                 logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, test_loss: {test_loss}")
+                wandb.log({"test_loss": test_loss.item(), "lr": lr, "epoch": epoch, "iteration": idx})
 
     model.save_pretrained(save_directory = args.output_dir)
     tokenizer.save_pretrained(save_directory = args.output_dir)
@@ -196,6 +198,7 @@ if __name__ == "__main__":
         format="%(asctime)s - %(module)s - %(levelname)s - %(message)s",
         level=logging.INFO,
     )
+    wandb.init(project="cs336-assn5-SFT")
     arguments = get_args()
     train_finetuning(arguments)
     # model_path = '/data/Meta-Llama-3-8B'
@@ -211,6 +214,7 @@ if __name__ == "__main__":
     #test_dataloader = get_dataloader(test_dataset, batch_size = 2, shuffle = True)
 
     logger.info("finished running")
+    wandb.finish()
 
 
             
