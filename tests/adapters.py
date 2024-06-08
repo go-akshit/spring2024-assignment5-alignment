@@ -11,6 +11,7 @@ from transformers import PreTrainedTokenizerBase
 import sys
 sys.path.insert(0, './cs336_alignment')
 from baseline_eval import parse_mmlu_response 
+from instruction_finetuning import finetuning_dataset, get_dataloader
 
 
 def get_packed_sft_dataset(
@@ -40,7 +41,7 @@ def get_packed_sft_dataset(
         "input_ids" contains the token IDs for the language modeling inputs, and "labels" contains
         the token IDs for the language modeling labels.
     """
-    raise NotImplementedError
+    return finetuning_dataset(tokenizer, dataset_path, seq_length, shuffle)
 
 
 def run_iterate_batches(
@@ -63,7 +64,7 @@ def run_iterate_batches(
     Returns:
         Iterable over batches, where each batch has size `batch_size`.
     """
-    raise NotImplementedError
+    return get_dataloader(dataset, batch_size, shuffle)
 
 
 def run_parse_mmlu_response(
