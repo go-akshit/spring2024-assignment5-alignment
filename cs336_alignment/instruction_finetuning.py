@@ -183,7 +183,7 @@ def get_args():
     parser.add_argument("--seq_length", type=int, default=512)
     parser.add_argument("--batch_size", type=int, default=2)
     parser.add_argument("--shuffle", type=bool, default=True)
-    parser.add_argument("--epochs", type=int, default=1)
+    parser.add_argument("--epochs", type=int, default=2)
     parser.add_argument("--train_steps", type=int, default=6726)
     parser.add_argument("--warmup_ratio", type=float, default=0.03)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=16)
