@@ -8,11 +8,15 @@ import math
 import logging
 import argparse
 import gzip
+from memory_profiler import profile
+import gc
 from tqdm import tqdm
 
 logger = logging.getLogger(__name__)
 
+
 class finetuning_dataset(Dataset):
+    #@profile
     def __init__(self, tokenizer, dataset_path, seq_length, shuffle):
         dataset_path = str(dataset_path)
         self.tokenizer = tokenizer
@@ -20,7 +24,8 @@ class finetuning_dataset(Dataset):
         self.seq_length = seq_length
         self.shuffle = shuffle
         self.mydata = []
-        self.all_documents = []
+        all_documents = []
+        tokenized_all_documents = []
         if dataset_path.endswith('.gz'):
             open_func = gzip.open
             mode = 'rt'
@@ -35,15 +40,16 @@ class finetuning_dataset(Dataset):
                 prompt = prompt_response_pair['prompt']
                 response = prompt_response_pair['response']
                 document = f"<|begin_of_text|>Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{prompt}\n\n### Response:\n{response}"
-                self.all_documents.append(document)
-        
+                all_documents.append(document)
+
+                
         if shuffle:
-            random.shuffle(self.all_documents)
+            random.shuffle(all_documents)
         
         #tokenized_text = tokenizer.encode(concatenated_documents, add_special_tokens=False)
         tokenized_all_documents = []
-        for idx, document in enumerate(self.all_documents):
-            if idx != len(self.all_documents) - 1:
+        for idx, document in enumerate(all_documents):
+            if idx != len(all_documents) - 1:
                 document += "<|end_of_text|>"
             tokenized_document = tokenizer.encode(document, add_special_tokens=False)
             tokenized_all_documents.extend(tokenized_document)
@@ -54,7 +60,7 @@ class finetuning_dataset(Dataset):
             labels = tokenized_all_documents[i + 1:i + seq_length + 1]
             labels = torch.tensor(labels)
             self.mydata.append({"input_ids": input_ids, "labels": labels})
-        
+
     
     def __len__(self):
         return len(self.mydata)
@@ -62,7 +68,7 @@ class finetuning_dataset(Dataset):
     def __getitem__(self, i):
         return self.mydata[i]
     
-
+#@profile
 def get_dataloader(dataset, batch_size, shuffle):
     return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
@@ -179,9 +185,12 @@ def get_args():
     parser.add_argument("--lr_scheduler", type=str, default='regular')
     return parser.parse_args()
 
+@profile
+def dummy_function():
+    print("dummy function")
 
 if __name__ == "__main__":
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()
     logging.basicConfig(
         format="%(asctime)s - %(module)s - %(levelname)s - %(message)s",
         level=logging.INFO,
@@ -189,14 +198,17 @@ if __name__ == "__main__":
     #arguments = get_args()
     #train_finetuning(arguments)
     model_path = '/data/Meta-Llama-3-8B'
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    train_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/train.jsonl.gz'
-    test_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/test.jsonl.gz'
+    #tokenizer = AutoTokenizer.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained('./tests/fixtures/Meta-Llama-3-8B')
+    #train_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/train.jsonl.gz'
+    train_dataset_path = './tests/fixtures/sft_sample.jsonl'
+    #test_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/test.jsonl.gz'
     
     train_dataset = finetuning_dataset(tokenizer, train_dataset_path, seq_length=512, shuffle = True)
-    train_dataloader = get_dataloader(train_dataset, batch_size = 2, shuffle = True)
-    test_dataset = finetuning_dataset(tokenizer, test_dataset_path, seq_length=512, shuffle = True)
-    test_dataloader = get_dataloader(test_dataset, batch_size = 2, shuffle = True)
+    dummy_function()
+    #train_dataloader = get_dataloader(train_dataset, batch_size = 2, shuffle = True)
+    #test_dataset = finetuning_dataset(tokenizer, test_dataset_path, seq_length=512, shuffle = True)
+    #test_dataloader = get_dataloader(test_dataset, batch_size = 2, shuffle = True)
 
     logger.info("finished running")
 
