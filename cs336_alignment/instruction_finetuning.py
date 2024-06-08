@@ -174,6 +174,7 @@ def get_args():
 
 
 if __name__ == "__main__":
+    import pdb; pdb.set_trace()
     logging.basicConfig(
         format="%(asctime)s - %(module)s - %(levelname)s - %(message)s",
         level=logging.INFO,
@@ -184,11 +185,11 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     train_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/train.jsonl.gz'
     test_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/test.jsonl.gz'
+    
     train_dataset = finetuning_dataset(tokenizer, train_dataset_path, seq_length=512, shuffle = True)
     train_dataloader = get_dataloader(train_dataset, batch_size = 2, shuffle = True)
     test_dataset = finetuning_dataset(tokenizer, test_dataset_path, seq_length=512, shuffle = True)
     test_dataloader = get_dataloader(test_dataset, batch_size = 2, shuffle = True)
-    import pdb; pdb.set_trace()
 
     logger.info("finished running")
 
