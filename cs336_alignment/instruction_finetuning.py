@@ -39,7 +39,7 @@ class finetuning_dataset(Dataset):
                 prompt_response_pair = json.loads(line.strip())
                 prompt = prompt_response_pair['prompt']
                 response = prompt_response_pair['response']
-                document = f"<|begin_of_text|>Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{prompt}\n\n### Response:\n{response}"
+                document = f"{tokenizer.bos_token}Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{prompt}\n\n### Response:\n{response}"
                 all_documents.append(document)
 
                 
@@ -50,7 +50,7 @@ class finetuning_dataset(Dataset):
         tokenized_all_documents = []
         for idx, document in enumerate(all_documents):
             if idx != len(all_documents) - 1:
-                document += "<|end_of_text|>"
+                document += f"{tokenizer.eos_token}"
             tokenized_document = tokenizer.encode(document, add_special_tokens=False)
             tokenized_all_documents.extend(tokenized_document)
             
