@@ -40,7 +40,6 @@ class finetuning_dataset(Dataset):
         if shuffle:
             random.shuffle(self.all_documents)
         
-        concatenated_documents = "<|end_of_text|>".join(self.all_documents)
         #tokenized_text = tokenizer.encode(concatenated_documents, add_special_tokens=False)
         tokenized_all_documents = []
         for idx, document in enumerate(self.all_documents):
