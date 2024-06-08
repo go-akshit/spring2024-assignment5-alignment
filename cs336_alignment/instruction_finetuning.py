@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 class finetuning_dataset(Dataset):
     def __init__(self, tokenizer, dataset_path, seq_length, shuffle):
+        dataset_path = str(dataset_path)
         self.tokenizer = tokenizer
         self.dataset_path = dataset_path
         self.seq_length = seq_length
@@ -40,11 +41,18 @@ class finetuning_dataset(Dataset):
             random.shuffle(self.all_documents)
         
         concatenated_documents = "<|end_of_text|>".join(self.all_documents)
-        tokenized_text = tokenizer.encode(concatenated_documents, add_special_tokens=False)
-        for i in range(0, len(tokenized_text) - seq_length - 1, seq_length):
-            input_ids = tokenized_text[i:i + seq_length]
+        #tokenized_text = tokenizer.encode(concatenated_documents, add_special_tokens=False)
+        tokenized_all_documents = []
+        for idx, document in enumerate(self.all_documents):
+            if idx != len(self.all_documents) - 1:
+                document += "<|end_of_text|>"
+            tokenized_document = tokenizer.encode(document, add_special_tokens=False)
+            tokenized_all_documents.extend(tokenized_document)
+            
+        for i in range(0, len(tokenized_all_documents) - seq_length - 1, seq_length):
+            input_ids = tokenized_all_documents[i:i + seq_length]
             input_ids = torch.tensor(input_ids)
-            labels = tokenized_text[i + 1:i + seq_length + 1]
+            labels = tokenized_all_documents[i + 1:i + seq_length + 1]
             labels = torch.tensor(labels)
             self.mydata.append({"input_ids": input_ids, "labels": labels})
         
