@@ -145,7 +145,8 @@ def train_finetuning(args):
             if (idx + 1) % args.gradient_accumulation_steps == 0:
                 optimizer.step()
                 optimizer.zero_grad()
-            logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, train_loss: {loss.item()}, LR: {lr}")
+            if (idx + 1) % (args.gradient_accumulation_steps * 10) == 0:
+                logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, train_loss: {loss.item()}, LR: {lr}")
             if((idx + 1) % args.eval_steps == 0):
                 test_loss = estimate_test_loss(model, test_dataloader, device)
                 logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, test_loss: {test_loss}")
