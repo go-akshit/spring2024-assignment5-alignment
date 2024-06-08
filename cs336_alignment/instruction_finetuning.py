@@ -143,7 +143,7 @@ def train_finetuning(args):
                 optimizer.step()
                 optimizer.zero_grad()
             logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, train_loss: {loss.item()}, LR: {lr}")
-            if(idx != 0 and idx % args.eval_steps == 0):
+            if((idx + 1) % args.eval_steps == 0):
                 test_loss = estimate_test_loss(model, test_dataloader, device)
                 logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, test_loss: {test_loss}")
 
@@ -178,16 +178,13 @@ def get_args():
     parser.add_argument("--batch_size", type=int, default=2)
     parser.add_argument("--shuffle", type=bool, default=True)
     parser.add_argument("--epochs", type=int, default=1)
-    parser.add_argument("--train_steps", type=int, default=1)
+    parser.add_argument("--train_steps", type=int, default=6726)
     parser.add_argument("--warmup_ratio", type=float, default=0.03)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=16)
-    parser.add_argument("--eval_steps", type=int, required=True)
+    parser.add_argument("--eval_steps", type=200, default=1600)
     parser.add_argument("--lr_scheduler", type=str, default='regular')
     return parser.parse_args()
 
-@profile
-def dummy_function():
-    print("dummy function")
 
 if __name__ == "__main__":
     #import pdb; pdb.set_trace()
@@ -195,17 +192,16 @@ if __name__ == "__main__":
         format="%(asctime)s - %(module)s - %(levelname)s - %(message)s",
         level=logging.INFO,
     )
-    #arguments = get_args()
-    #train_finetuning(arguments)
-    model_path = '/data/Meta-Llama-3-8B'
+    arguments = get_args()
+    train_finetuning(arguments)
+    # model_path = '/data/Meta-Llama-3-8B'
     #tokenizer = AutoTokenizer.from_pretrained(model_path)
-    tokenizer = AutoTokenizer.from_pretrained('./tests/fixtures/Meta-Llama-3-8B')
+    # tokenizer = AutoTokenizer.from_pretrained('./tests/fixtures/Meta-Llama-3-8B')
     #train_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/train.jsonl.gz'
-    train_dataset_path = './tests/fixtures/sft_sample.jsonl'
+    # train_dataset_path = './tests/fixtures/sft_sample.jsonl'
     #test_dataset_path = '/home/shared/safety_augmented_ultrachat_200k_single_turn/test.jsonl.gz'
     
-    train_dataset = finetuning_dataset(tokenizer, train_dataset_path, seq_length=512, shuffle = True)
-    dummy_function()
+    # train_dataset = finetuning_dataset(tokenizer, train_dataset_path, seq_length=512, shuffle = True)
     #train_dataloader = get_dataloader(train_dataset, batch_size = 2, shuffle = True)
     #test_dataset = finetuning_dataset(tokenizer, test_dataset_path, seq_length=512, shuffle = True)
     #test_dataloader = get_dataloader(test_dataset, batch_size = 2, shuffle = True)
