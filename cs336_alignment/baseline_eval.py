@@ -194,7 +194,7 @@ def alpaca_eval_predictions(file_path, model_name):
         json.dump(json_output, f, indent=4)
 
     with open('alpaca_eval_predictions.json', 'w') as f:
-        json.dump(eval_set, f, indent=4)
+        json.dump(eval_set, f)
 
 def get_alpaca_eval_prompts(file_path):
     prompts = []
