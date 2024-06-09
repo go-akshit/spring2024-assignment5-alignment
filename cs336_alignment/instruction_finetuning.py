@@ -145,14 +145,18 @@ def train_finetuning(args):
             if (idx + 1) % args.gradient_accumulation_steps == 0:
                 optimizer.step()
                 optimizer.zero_grad()
-            if (idx + 1) % (args.gradient_accumulation_steps * 10) == 0:
+            if (idx + 1) % (args.gradient_accumulation_steps * 100) == 0:
                 logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, train_loss: {loss.item()}, LR: {lr}")
                 wandb.log({"train_loss": loss.item(), "lr": lr, "epoch": epoch, "iteration": idx})
-            if((idx + 1) % args.eval_steps == 0):
-                test_loss = estimate_test_loss(model, test_dataloader, device)
-                logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, test_loss: {test_loss}")
-                wandb.log({"test_loss": test_loss, "lr": lr, "epoch": epoch, "iteration": idx})
+            # if((idx + 1) % args.eval_steps == 0):
+            #     test_loss = estimate_test_loss(model, test_dataloader, device)
+            #     logger.info(f"CS336-Assn5: Epoch {epoch}, Iteration {idx}, test_loss: {test_loss}")
+            #     wandb.log({"test_loss": test_loss, "lr": lr, "epoch": epoch, "iteration": idx})
 
+    test_loss = estimate_test_loss(model, test_dataloader, device)
+    logger.info(f"CS336-Assn5: test_loss: {test_loss}")
+    wandb.log({"test_loss": test_loss})
+    
     model.save_pretrained(save_directory = args.output_dir)
     tokenizer.save_pretrained(save_directory = args.output_dir)
             
