@@ -10,7 +10,7 @@ from transformers import PreTrainedTokenizerBase
 
 import sys
 sys.path.insert(0, './cs336_alignment')
-from baseline_eval import parse_mmlu_response 
+from baseline_eval import parse_mmlu_response, parse_gsm8k_response
 from instruction_finetuning import finetuning_dataset, get_dataloader
 
 
@@ -108,7 +108,7 @@ def run_parse_gsm8k_response(
         str with the predicted numeric answer if the model output can be parsed into a prediction,
         else None.
     """
-    raise NotImplementedError
+    return parse_gsm8k_response(model_output)
 
 
 def compute_per_instance_dpo_loss(
