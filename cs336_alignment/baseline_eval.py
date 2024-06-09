@@ -259,7 +259,9 @@ def get_sst_baseline_prompts(file_path):
     instr = []
     with open(file_path, newline='') as csvfile:
         reader = csv.reader(csvfile)
-        for row in reader:
+        for idx, row in enumerate(reader):
+            if idx == 0:
+                continue
             instruction = row[-1]
             prompt = (f"# Instruction\nBelow is a list of conversations between a human and an AI assistant (you).\n"
                         f"Users place their queries under \"# Query:\", and your responses are under \"# Answer:\".\n"
