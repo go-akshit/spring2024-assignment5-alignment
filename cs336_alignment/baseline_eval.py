@@ -163,12 +163,71 @@ def get_gsm8k_prompts(file_path):
             correct_answers.append(correct_answer)
     return prompts, correct_answers
 
+def alpaca_eval_predictions(file_path, model_name):
+    prompts, instr_datasets = get_alpaca_eval_prompts(file_path)
+    sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
+    if model_name == 'base':
+        llm = LLM(model='/data/Meta-Llama-3-8B')
+    elif model_name == 'instruct':
+        llm = LLM(model='/home/shared/Meta-Llama-3-70B-Instruct')
+    
+    start_time = timeit.default_timer()
+    outputs = llm.generate(prompts, sampling_params)
+    end_time = timeit.default_timer()
+    throughput = len(outputs) / (end_time - start_time)
+
+    eval_set = []
+    num_correct = 0
+    for output in outputs:
+
+        prompt = output.prompt
+        prompt_index = prompts.index(prompt)
+        generated_text = output.outputs[0].text
+        example = {'instruction': instr_datasets[prompt_index][0], 'dataset': instr_datasets[prompt_index][1], 'output': generated_text, 'generator':'llama-3-8b-base'}
+        eval_set.append(example)
+
+    json_output = {
+
+        "throughput": throughput,
+    }
+    with open('alpaca_eval.json', 'w') as f:
+        json.dump(json_output, f, indent=4)
+
+    with open('alpaca_eval_predictions.json', 'w') as f:
+        json.dump(eval_set, f, indent=4)
+
+def get_alpaca_eval_prompts(file_path):
+    prompts = []
+    instr_datasets = []
+    with open(file_path, 'r') as f:
+        for line in f: 
+            instruction_dataset_pair = json.loads(line)
+            alpaca_instruction = instruction_dataset_pair['instruction']
+            dataset = instruction_dataset_pair['dataset']
+            instruction = (f"{alpaca_instruction}")
+            prompt = (f"# Instruction\nBelow is a list of conversations between a human and an AI assistant (you).\n"
+                        f"Users place their queries under \"# Query:\", and your responses are under \"# Answer:\".\n"
+                        f"You are a helpful, respectful, and honest assistant.\n"
+                        f"You should always answer as helpfully as possible while ensuring safety.\n"
+                        f"Your answers should be well-structured and provide detailed information. They should also have an engaging tone.\n"
+                        f"Your responses must not contain any fake, harmful, unethical, racist, sexist, toxic,dangerous, or illegal content, even if it may be helpful.\n"
+                        f"Your response must be socially responsible, and thus you can reject to answer some controversial topics.\n"
+                        f"# Query:\n"
+                        f"```{instruction}```\n"
+                        f"# Answer:\n"
+                        f"```")
+            prompts.append(prompt)
+            instr_datasets.append((alpaca_instruction, dataset))
+    return prompts, instr_datasets
+
 def main():
     dir_path = './data/mmlu/test'
     model_name = 'base'
-    gsm8k_file_path = './data/gsm8k/test.jsonl'
+    #gsm8k_file_path = './data/gsm8k/test.jsonl'
     #evaluate_performance_mmlu(dir_path, model_name)
-    evaluate_performance_gsm8k(gsm8k_file_path, model_name)
+    #evaluate_performance_gsm8k(gsm8k_file_path, model_name)
+
+    alpaca_eval_predictions('./data/alpaca/alpaca_eval.jsonl', model_name)
 
 
 if __name__ == "__main__":
