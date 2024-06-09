@@ -227,7 +227,7 @@ def main():
     #evaluate_performance_mmlu(dir_path, model_name)
     #evaluate_performance_gsm8k(gsm8k_file_path, model_name)
 
-    alpaca_eval_predictions('./data/alpaca/alpaca_eval.jsonl', model_name)
+    alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl', model_name)
 
 
 if __name__ == "__main__":
