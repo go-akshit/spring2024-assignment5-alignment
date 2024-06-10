@@ -37,7 +37,15 @@ def hh_dataset(file_paths, output_file_path):
         for entry in dataset:
             f.write(json.dumps(entry) + '\n')
 
-                    
+
+# def dpo_loss(lm, lm_ref, tokenizer, beta, prompt, response_chosen, response_rejected):
+#     yw_x = f"{tokenizer.bos_token}Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{prompt}\n\n### Response:\n{response_chosen}"
+#     yl_x = f"{tokenizer.bos_token}Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{prompt}\n\n### Response:\n{response_rejected}"
+#     tokenized_yw_x = tokenizer.encode(yw_x, add_special_tokens=False)
+#     tokenized_yl_x = tokenizer.encode(yl_x, add_special_tokens=False)
+
+    
+
 
 def main():
     input_file_paths = ['/home/shared/hh/helpful-base.jsonl.gz',
