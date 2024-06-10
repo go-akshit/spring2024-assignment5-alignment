@@ -5,7 +5,7 @@ import json
 def hh_dataset(file_paths, output_file_path):
     dataset = []
     for file_path in file_paths:
-        category = file_path.split('/')[-2]
+        category = file_path.split('/')[-1]
         with gzip.open(file_path, 'rt', 'utf-8') as f:
             for line in f:
                 example = json.loads(line)
