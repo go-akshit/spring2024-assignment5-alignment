@@ -8,4 +8,4 @@
 #SBATCH --gpus=2
 #SBATCH --output=safety_%j.out
 #SBATCH --error=safety_%j.err
-python scripts/evaluate_safety.py --input-path <'sst_baseline_predictions.jsonl'> --model-name-or-path /home/shared/Meta-Llama-3-70B-Instruct --num-gpus 2 --output-path <'safety_baseline.jsonl'>
+python scripts/evaluate_safety.py --input-path 'sst_baseline_predictions.jsonl' --model-name-or-path /home/shared/Meta-Llama-3-70B-Instruct --num-gpus 2 --output-path 'safety_baseline.jsonl'
