@@ -1,0 +1,11 @@
+2024-06-10 20:18:12,799 - evaluate_safety - INFO - running scripts/evaluate_safety.py --input-path sst_sft_predictions.jsonl --model-name-or-path /home/shared/Meta-Llama-3-70B-Instruct --num-gpus 2 --output-path safety_sst.jsonl
+2024-06-10 20:18:14,893	INFO worker.py:1749 -- Started a local Ray instance.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+2024-06-10 20:19:12,596 - evaluate_safety - INFO - Read 100 model responses from sst_sft_predictions.jsonl
+Processed prompts:   0%|          | 0/100 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s]Processed prompts:   1%|          | 1/100 [00:01<02:20,  1.42s/it, Generation Speed: 1.41 toks/s]Processed prompts:  67%|██████▋   | 67/100 [00:02<00:00, 38.07it/s, Generation Speed: 61.54 toks/s]Processed prompts: 100%|██████████| 100/100 [00:02<00:00, 45.87it/s, Generation Speed: 91.74 toks/s]
+2024-06-10 20:19:14,879 - evaluate_safety - INFO - Processed 100 prompts
+0it [00:00, ?it/s]100it [00:00, 107546.26it/s]
+2024-06-10 20:19:14,892 - evaluate_safety - INFO - safe: 0.9
+2024-06-10 20:19:14,894 - evaluate_safety - INFO - finished running scripts/evaluate_safety.py
+[rank0]:[W CudaIPCTypes.cpp:16] Producer process has been terminated before all shared CUDA tensors released. See Note [Sharing CUDA tensors]
