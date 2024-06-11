@@ -1,0 +1,21 @@
+INFO 06-10 19:37:51 llm_engine.py:161] Initializing an LLM engine (v0.4.3) with config: model='/home/shared/Meta-Llama-3-70B-Instruct', speculative_config=None, tokenizer='/home/shared/Meta-Llama-3-70B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=7000, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), seed=0, served_model_name=/home/shared/Meta-Llama-3-70B-Instruct)
+INFO 06-10 19:37:57 utils.py:618] Found nccl from library libnccl.so.2
+INFO 06-10 19:37:57 pynccl.py:65] vLLM is using nccl==2.20.5
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:37:57 utils.py:618] Found nccl from library libnccl.so.2
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:37:57 pynccl.py:65] vLLM is using nccl==2.20.5
+INFO 06-10 19:37:57 custom_all_reduce_utils.py:179] reading GPU P2P access cache from /home/c-akshit/.config/vllm/gpu_p2p_access_cache_for_0,1.json
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:37:57 custom_all_reduce_utils.py:179] reading GPU P2P access cache from /home/c-akshit/.config/vllm/gpu_p2p_access_cache_for_0,1.json
+INFO 06-10 19:38:19 model_runner.py:146] Loading model weights took 65.7114 GB
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:38:26 model_runner.py:146] Loading model weights took 65.7114 GB
+INFO 06-10 19:38:28 distributed_gpu_executor.py:56] # GPU blocks: 643, # CPU blocks: 1638
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:38:31 model_runner.py:854] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:38:31 model_runner.py:858] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 06-10 19:38:31 model_runner.py:854] Capturing the model for CUDA graphs. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 06-10 19:38:31 model_runner.py:858] CUDA graphs can take additional 1~3 GiB memory per GPU. If you are running out of memory, consider decreasing `gpu_memory_utilization` or enforcing eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 06-10 19:38:36 custom_all_reduce.py:260] Registering 5635 cuda graph addresses
+INFO 06-10 19:38:36 model_runner.py:924] Graph capturing finished in 5 secs.
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:38:36 custom_all_reduce.py:260] Registering 5635 cuda graph addresses
+[36m(RayWorkerWrapper pid=342614)[0m INFO 06-10 19:38:36 model_runner.py:924] Graph capturing finished in 5 secs.
+WARNING 06-10 19:38:43 scheduler.py:1077] Sequence group 35 is preempted by PreemptionMode.RECOMPUTE mode because there is not enough KV cache space. This can affect the end-to-end performance. Increase gpu_memory_utilization or tensor_parallel_size to provide more KV cache memory. total_num_cumulative_preemption=1
+                 length_controlled_winrate  win_rate  standard_error  n_total  avg_length
+llama-3-8b-base                       2.10      0.99            0.35      805         304

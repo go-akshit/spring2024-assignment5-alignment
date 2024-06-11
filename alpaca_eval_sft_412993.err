@@ -1,0 +1,177 @@
+WARNING:root:precomputed_leaderboard = 'auto'. But we have found no corresponding leaderboard
+/home/c-akshit/miniconda3/envs/cs336_alignment/lib/python3.10/site-packages/datasets/load.py:1486: FutureWarning: The repository for tatsu-lab/alpaca_eval contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/tatsu-lab/alpaca_eval
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+INFO:root:Evaluating the llama-3-8b-base outputs.
+INFO:root:Creating the annotator from `scripts/alpaca_eval_vllm_llama3_70b_fn`.
+INFO:root:Saving annotations to `scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json`.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:   0%|          | 0/7 [00:00<?, ?it/s]INFO:root:Annotating 126 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:vllm: loading model: /home/shared/Meta-Llama-3-70B-Instruct, tp=2, trust_remote_code=1
+2024-06-10 19:37:37,593	INFO worker.py:1749 -- Started a local Ray instance.
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+Processed prompts:   0%|          | 0/126 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/126 [00:02<04:57,  2.38s/it, Generation Speed: 13.85 toks/s][A
+Processed prompts:  11%|█         | 14/126 [00:04<00:33,  3.36it/s, Generation Speed: 96.36 toks/s][A
+Processed prompts:  20%|█▉        | 25/126 [00:07<00:25,  3.90it/s, Generation Speed: 114.34 toks/s][A
+Processed prompts:  29%|██▊       | 36/126 [00:08<00:18,  4.92it/s, Generation Speed: 136.82 toks/s][A
+Processed prompts:  29%|██▉       | 37/126 [00:09<00:22,  4.01it/s, Generation Speed: 125.13 toks/s][A
+Processed prompts:  38%|███▊      | 48/126 [00:11<00:14,  5.30it/s, Generation Speed: 143.57 toks/s][A
+Processed prompts:  39%|███▉      | 49/126 [00:12<00:18,  4.14it/s, Generation Speed: 132.89 toks/s][A
+Processed prompts:  47%|████▋     | 59/126 [00:13<00:12,  5.16it/s, Generation Speed: 144.17 toks/s][A
+Processed prompts:  48%|████▊     | 60/126 [00:14<00:16,  4.00it/s, Generation Speed: 135.19 toks/s][A
+Processed prompts:  56%|█████▌    | 70/126 [00:15<00:10,  5.12it/s, Generation Speed: 144.80 toks/s][A
+Processed prompts:  56%|█████▋    | 71/126 [00:16<00:12,  4.35it/s, Generation Speed: 140.23 toks/s][A
+Processed prompts:  57%|█████▋    | 72/126 [00:17<00:13,  4.02it/s, Generation Speed: 138.36 toks/s][A
+Processed prompts:  65%|██████▌   | 82/126 [00:18<00:08,  5.34it/s, Generation Speed: 146.14 toks/s][A
+Processed prompts:  66%|██████▌   | 83/126 [00:19<00:10,  4.25it/s, Generation Speed: 141.35 toks/s][A
+Processed prompts:  67%|██████▋   | 84/126 [00:19<00:10,  4.11it/s, Generation Speed: 140.72 toks/s][A
+Processed prompts:  74%|███████▍  | 93/126 [00:21<00:06,  5.27it/s, Generation Speed: 146.13 toks/s][A
+Processed prompts:  75%|███████▍  | 94/126 [00:21<00:07,  4.09it/s, Generation Speed: 141.78 toks/s][A
+Processed prompts:  75%|███████▌  | 95/126 [00:22<00:07,  4.09it/s, Generation Speed: 141.69 toks/s][A
+Processed prompts:  83%|████████▎ | 105/126 [00:23<00:03,  5.58it/s, Generation Speed: 147.64 toks/s][A
+Processed prompts:  84%|████████▍ | 106/126 [00:24<00:05,  3.98it/s, Generation Speed: 142.38 toks/s][A
+Processed prompts:  93%|█████████▎| 117/126 [00:25<00:01,  5.70it/s, Generation Speed: 149.52 toks/s][A
+Processed prompts:  94%|█████████▎| 118/126 [00:26<00:01,  4.38it/s, Generation Speed: 145.35 toks/s][AProcessed prompts: 100%|██████████| 126/126 [00:26<00:00,  4.70it/s, Generation Speed: 155.18 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  14%|█▍        | 1/7 [01:28<08:49, 88.25s/it]INFO:root:Annotating 126 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/126 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/126 [00:02<05:05,  2.44s/it, Generation Speed: 13.51 toks/s][A
+Processed prompts:   9%|▊         | 11/126 [00:04<00:43,  2.63it/s, Generation Speed: 75.65 toks/s][A
+Processed prompts:  17%|█▋        | 22/126 [00:07<00:29,  3.56it/s, Generation Speed: 101.51 toks/s][A
+Processed prompts:  27%|██▋       | 34/126 [00:09<00:22,  4.09it/s, Generation Speed: 116.74 toks/s][A
+Processed prompts:  36%|███▌      | 45/126 [00:11<00:17,  4.67it/s, Generation Speed: 129.81 toks/s][A
+Processed prompts:  37%|███▋      | 46/126 [00:12<00:19,  4.19it/s, Generation Speed: 124.75 toks/s][A
+Processed prompts:  44%|████▍     | 56/126 [00:13<00:14,  4.74it/s, Generation Speed: 133.25 toks/s][A
+Processed prompts:  45%|████▌     | 57/126 [00:14<00:16,  4.19it/s, Generation Speed: 128.93 toks/s][A
+Processed prompts:  53%|█████▎    | 67/126 [00:16<00:12,  4.75it/s, Generation Speed: 135.37 toks/s][A
+Processed prompts:  55%|█████▍    | 69/126 [00:16<00:12,  4.47it/s, Generation Speed: 133.98 toks/s][A
+Processed prompts:  62%|██████▏   | 78/126 [00:18<00:10,  4.66it/s, Generation Speed: 136.82 toks/s][A
+Processed prompts:  63%|██████▎   | 79/126 [00:19<00:11,  4.11it/s, Generation Speed: 133.79 toks/s][A
+Processed prompts:  71%|███████▏  | 90/126 [00:20<00:06,  5.33it/s, Generation Speed: 141.97 toks/s][A
+Processed prompts:  72%|███████▏  | 91/126 [00:21<00:08,  4.34it/s, Generation Speed: 137.65 toks/s][A
+Processed prompts:  79%|███████▉  | 100/126 [00:24<00:06,  4.01it/s, Generation Speed: 135.89 toks/s][A
+Processed prompts:  88%|████████▊ | 111/126 [00:26<00:03,  4.76it/s, Generation Speed: 140.73 toks/s][A
+Processed prompts:  89%|████████▉ | 112/126 [00:26<00:03,  4.12it/s, Generation Speed: 137.64 toks/s][A
+Processed prompts:  98%|█████████▊| 123/126 [00:27<00:00,  6.15it/s, Generation Speed: 147.13 toks/s][A
+Processed prompts:  98%|█████████▊| 124/126 [00:28<00:00,  5.27it/s, Generation Speed: 144.94 toks/s][AProcessed prompts: 100%|██████████| 126/126 [00:28<00:00,  4.46it/s, Generation Speed: 147.25 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  29%|██▊       | 2/7 [01:56<04:25, 53.18s/it]INFO:root:Annotating 125 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/125 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/125 [00:02<04:57,  2.40s/it, Generation Speed: 13.77 toks/s][A
+Processed prompts:  10%|▉         | 12/125 [00:04<00:39,  2.83it/s, Generation Speed: 81.57 toks/s][A
+Processed prompts:  18%|█▊        | 23/125 [00:06<00:25,  4.03it/s, Generation Speed: 112.93 toks/s][A
+Processed prompts:  19%|█▉        | 24/125 [00:07<00:27,  3.63it/s, Generation Speed: 107.54 toks/s][A
+Processed prompts:  28%|██▊       | 35/125 [00:09<00:19,  4.69it/s, Generation Speed: 127.21 toks/s][A
+Processed prompts:  29%|██▉       | 36/125 [00:09<00:21,  4.10it/s, Generation Speed: 121.47 toks/s][A
+Processed prompts:  38%|███▊      | 47/125 [00:11<00:15,  4.93it/s, Generation Speed: 134.21 toks/s][A
+Processed prompts:  38%|███▊      | 48/125 [00:12<00:17,  4.34it/s, Generation Speed: 129.69 toks/s][A
+Processed prompts:  48%|████▊     | 60/125 [00:13<00:12,  5.30it/s, Generation Speed: 141.49 toks/s][A
+Processed prompts:  49%|████▉     | 61/125 [00:14<00:13,  4.82it/s, Generation Speed: 138.68 toks/s][A
+Processed prompts:  58%|█████▊    | 72/125 [00:16<00:11,  4.68it/s, Generation Speed: 140.26 toks/s][A
+Processed prompts:  66%|██████▌   | 82/125 [00:19<00:09,  4.45it/s, Generation Speed: 139.77 toks/s][A
+Processed prompts:  74%|███████▍  | 93/125 [00:21<00:07,  4.50it/s, Generation Speed: 141.01 toks/s][A
+Processed prompts:  82%|████████▏ | 103/125 [00:24<00:05,  4.39it/s, Generation Speed: 140.74 toks/s][A
+Processed prompts:  92%|█████████▏| 115/125 [00:26<00:02,  4.58it/s, Generation Speed: 142.81 toks/s][AProcessed prompts: 100%|██████████| 125/125 [00:26<00:00,  4.70it/s, Generation Speed: 155.19 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  43%|████▎     | 3/7 [02:23<02:44, 41.22s/it]INFO:root:Annotating 121 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/121 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/121 [00:02<04:52,  2.44s/it, Generation Speed: 13.53 toks/s][A
+Processed prompts:  12%|█▏        | 15/121 [00:04<00:26,  4.01it/s, Generation Speed: 112.57 toks/s][A
+Processed prompts:  13%|█▎        | 16/121 [00:05<00:29,  3.50it/s, Generation Speed: 104.42 toks/s][A
+Processed prompts:  21%|██▏       | 26/121 [00:06<00:19,  4.79it/s, Generation Speed: 131.24 toks/s][A
+Processed prompts:  22%|██▏       | 27/121 [00:07<00:24,  3.80it/s, Generation Speed: 119.04 toks/s][A
+Processed prompts:  33%|███▎      | 40/121 [00:09<00:14,  5.59it/s, Generation Speed: 146.51 toks/s][A
+Processed prompts:  34%|███▍      | 41/121 [00:09<00:18,  4.43it/s, Generation Speed: 135.69 toks/s][A
+Processed prompts:  42%|████▏     | 51/121 [00:11<00:13,  5.14it/s, Generation Speed: 145.64 toks/s][A
+Processed prompts:  43%|████▎     | 52/121 [00:12<00:16,  4.24it/s, Generation Speed: 138.20 toks/s][A
+Processed prompts:  51%|█████     | 62/121 [00:14<00:14,  4.15it/s, Generation Speed: 137.43 toks/s][A
+Processed prompts:  62%|██████▏   | 75/121 [00:16<00:08,  5.40it/s, Generation Speed: 150.38 toks/s][A
+Processed prompts:  63%|██████▎   | 76/121 [00:17<00:10,  4.44it/s, Generation Speed: 143.60 toks/s][A
+Processed prompts:  64%|██████▎   | 77/121 [00:17<00:09,  4.56it/s, Generation Speed: 144.40 toks/s][A
+Processed prompts:  74%|███████▎  | 89/121 [00:19<00:05,  5.46it/s, Generation Speed: 151.34 toks/s][A
+Processed prompts:  74%|███████▍  | 90/121 [00:20<00:07,  4.43it/s, Generation Speed: 146.20 toks/s][A
+Processed prompts:  84%|████████▍ | 102/121 [00:21<00:03,  5.75it/s, Generation Speed: 154.51 toks/s][A
+Processed prompts:  85%|████████▌ | 103/121 [00:22<00:03,  4.79it/s, Generation Speed: 150.54 toks/s][A
+Processed prompts:  86%|████████▌ | 104/121 [00:22<00:03,  4.50it/s, Generation Speed: 149.46 toks/s][A
+Processed prompts:  95%|█████████▌| 115/121 [00:23<00:00,  6.99it/s, Generation Speed: 159.47 toks/s][A
+Processed prompts:  96%|█████████▌| 116/121 [00:24<00:00,  6.80it/s, Generation Speed: 159.49 toks/s][A
+Processed prompts:  97%|█████████▋| 117/121 [00:24<00:00,  5.34it/s, Generation Speed: 156.85 toks/s][AProcessed prompts: 100%|██████████| 121/121 [00:24<00:00,  4.91it/s, Generation Speed: 162.18 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  57%|█████▋    | 4/7 [02:48<01:44, 34.86s/it]INFO:root:Annotating 122 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/122 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/122 [00:02<04:56,  2.45s/it, Generation Speed: 13.45 toks/s][A
+Processed prompts:  10%|▉         | 12/122 [00:04<00:35,  3.08it/s, Generation Speed: 87.27 toks/s][A
+Processed prompts:  11%|█         | 13/122 [00:05<00:38,  2.85it/s, Generation Speed: 84.11 toks/s][A
+Processed prompts:  11%|█▏        | 14/122 [00:05<00:34,  3.13it/s, Generation Speed: 88.52 toks/s][A
+Processed prompts:  22%|██▏       | 27/122 [00:07<00:18,  5.25it/s, Generation Speed: 126.88 toks/s][A
+Processed prompts:  23%|██▎       | 28/122 [00:07<00:21,  4.36it/s, Generation Speed: 119.21 toks/s][A
+Processed prompts:  30%|███       | 37/122 [00:09<00:18,  4.68it/s, Generation Speed: 128.19 toks/s][A
+Processed prompts:  31%|███       | 38/122 [00:10<00:21,  3.91it/s, Generation Speed: 121.43 toks/s][A
+Processed prompts:  41%|████      | 50/122 [00:11<00:12,  5.73it/s, Generation Speed: 141.93 toks/s][A
+Processed prompts:  42%|████▏     | 51/122 [00:12<00:13,  5.14it/s, Generation Speed: 138.80 toks/s][A
+Processed prompts:  43%|████▎     | 52/122 [00:12<00:16,  4.27it/s, Generation Speed: 133.98 toks/s][A
+Processed prompts:  49%|████▉     | 60/122 [00:14<00:12,  4.92it/s, Generation Speed: 139.76 toks/s][A
+Processed prompts:  50%|█████     | 61/122 [00:14<00:13,  4.54it/s, Generation Speed: 138.03 toks/s][A
+Processed prompts:  51%|█████     | 62/122 [00:15<00:15,  3.77it/s, Generation Speed: 134.15 toks/s][A
+Processed prompts:  59%|█████▉    | 72/122 [00:16<00:09,  5.24it/s, Generation Speed: 142.74 toks/s][A
+Processed prompts:  60%|█████▉    | 73/122 [00:17<00:10,  4.86it/s, Generation Speed: 141.47 toks/s][A
+Processed prompts:  61%|██████    | 74/122 [00:17<00:12,  3.90it/s, Generation Speed: 137.68 toks/s][A
+Processed prompts:  70%|██████▉   | 85/122 [00:19<00:06,  5.57it/s, Generation Speed: 146.27 toks/s][A
+Processed prompts:  70%|███████   | 86/122 [00:19<00:06,  5.35it/s, Generation Speed: 145.86 toks/s][A
+Processed prompts:  71%|███████▏  | 87/122 [00:20<00:08,  4.18it/s, Generation Speed: 142.18 toks/s][A
+Processed prompts:  72%|███████▏  | 88/122 [00:20<00:07,  4.41it/s, Generation Speed: 142.87 toks/s][A
+Processed prompts:  81%|████████  | 99/122 [00:22<00:04,  5.37it/s, Generation Speed: 147.57 toks/s][A
+Processed prompts:  82%|████████▏ | 100/122 [00:22<00:04,  4.89it/s, Generation Speed: 146.28 toks/s][A
+Processed prompts:  83%|████████▎ | 101/122 [00:23<00:04,  4.37it/s, Generation Speed: 144.89 toks/s][A
+Processed prompts:  92%|█████████▏| 112/122 [00:24<00:01,  6.70it/s, Generation Speed: 153.42 toks/s][A
+Processed prompts:  93%|█████████▎| 113/122 [00:24<00:01,  6.10it/s, Generation Speed: 152.58 toks/s][A
+Processed prompts:  93%|█████████▎| 114/122 [00:24<00:01,  5.80it/s, Generation Speed: 152.35 toks/s][A
+Processed prompts:  94%|█████████▍| 115/122 [00:25<00:01,  5.30it/s, Generation Speed: 151.80 toks/s][AProcessed prompts: 100%|██████████| 122/122 [00:25<00:00,  4.87it/s, Generation Speed: 160.77 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  71%|███████▏  | 5/7 [03:14<01:03, 31.54s/it]INFO:root:Annotating 126 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/126 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   1%|          | 1/126 [00:02<04:53,  2.35s/it, Generation Speed: 14.05 toks/s][A
+Processed prompts:  10%|█         | 13/126 [00:04<00:36,  3.13it/s, Generation Speed: 90.01 toks/s][A
+Processed prompts:  18%|█▊        | 23/126 [00:07<00:28,  3.56it/s, Generation Speed: 105.01 toks/s][A
+Processed prompts:  29%|██▉       | 37/126 [00:09<00:18,  4.89it/s, Generation Speed: 134.49 toks/s][A
+Processed prompts:  30%|███       | 38/126 [00:09<00:19,  4.40it/s, Generation Speed: 128.78 toks/s][A
+Processed prompts:  40%|████      | 51/126 [00:11<00:13,  5.43it/s, Generation Speed: 145.95 toks/s][A
+Processed prompts:  41%|████▏     | 52/126 [00:12<00:15,  4.83it/s, Generation Speed: 140.95 toks/s][A
+Processed prompts:  49%|████▉     | 62/126 [00:13<00:12,  5.17it/s, Generation Speed: 147.05 toks/s][A
+Processed prompts:  51%|█████     | 64/126 [00:14<00:12,  4.81it/s, Generation Speed: 144.88 toks/s][A
+Processed prompts:  62%|██████▏   | 78/126 [00:16<00:07,  6.05it/s, Generation Speed: 157.61 toks/s][A
+Processed prompts:  63%|██████▎   | 79/126 [00:16<00:08,  5.26it/s, Generation Speed: 153.41 toks/s][A
+Processed prompts:  72%|███████▏  | 91/126 [00:18<00:05,  5.89it/s, Generation Speed: 160.20 toks/s][A
+Processed prompts:  73%|███████▎  | 92/126 [00:19<00:06,  5.07it/s, Generation Speed: 156.18 toks/s][A
+Processed prompts:  83%|████████▎ | 105/126 [00:21<00:03,  5.96it/s, Generation Speed: 163.22 toks/s][A
+Processed prompts:  84%|████████▍ | 106/126 [00:21<00:03,  5.14it/s, Generation Speed: 159.60 toks/s][A
+Processed prompts:  94%|█████████▎| 118/126 [00:23<00:01,  6.35it/s, Generation Speed: 167.13 toks/s][A
+Processed prompts:  94%|█████████▍| 119/126 [00:23<00:01,  5.68it/s, Generation Speed: 164.93 toks/s][AProcessed prompts: 100%|██████████| 126/126 [00:23<00:00,  5.29it/s, Generation Speed: 174.60 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  86%|████████▌ | 6/7 [03:38<00:29, 29.05s/it]INFO:root:Annotating 35 examples with alpaca_eval_vllm_llama3_70b_fn
+
+Processed prompts:   0%|          | 0/35 [00:00<?, ?it/s, Generation Speed: 0.00 toks/s][A
+Processed prompts:   3%|▎         | 1/35 [00:02<01:20,  2.36s/it, Generation Speed: 14.01 toks/s][A
+Processed prompts:  34%|███▍      | 12/35 [00:04<00:07,  2.93it/s, Generation Speed: 84.18 toks/s][A
+Processed prompts:  60%|██████    | 21/35 [00:07<00:04,  3.29it/s, Generation Speed: 97.21 toks/s][A
+Processed prompts:  91%|█████████▏| 32/35 [00:08<00:00,  4.33it/s, Generation Speed: 120.10 toks/s][AProcessed prompts: 100%|██████████| 35/35 [00:08<00:00,  3.98it/s, Generation Speed: 131.29 toks/s]
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk: 100%|██████████| 7/7 [03:47<00:00, 22.49s/it]Annotation chunk: 100%|██████████| 7/7 [03:47<00:00, 32.55s/it]
+INFO:root:Saving all results to .
+INFO:root:Not saving the result to the cached leaderboard because precomputed_leaderboard is not a path but <class 'NoneType'>.
+[rank0]:[W CudaIPCTypes.cpp:16] Producer process has been terminated before all shared CUDA tensors released. See Note [Sharing CUDA tensors]

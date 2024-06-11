@@ -1,0 +1,35 @@
+WARNING:root:precomputed_leaderboard = 'auto'. But we have found no corresponding leaderboard
+/home/c-akshit/miniconda3/envs/cs336_alignment/lib/python3.10/site-packages/datasets/load.py:1486: FutureWarning: The repository for tatsu-lab/alpaca_eval contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/tatsu-lab/alpaca_eval
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+INFO:root:Evaluating the llama-3-8b-base outputs.
+INFO:root:Creating the annotator from `scripts/alpaca_eval_vllm_llama3_70b_fn`.
+INFO:root:Saving annotations to `scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json`.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:   0%|          | 0/7 [00:00<?, ?it/s]/home/c-akshit/miniconda3/envs/cs336_alignment/lib/python3.10/site-packages/alpaca_eval/annotators/pairwise_evaluator.py:307: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1.5' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  df_to_annotate.loc[idcs_is_same_outputs, self.annotation_key] = 1.5
+INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  29%|██▊       | 2/7 [00:00<00:00, 11.38it/s]INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  57%|█████▋    | 4/7 [00:00<00:00, 11.99it/s]INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk:  86%|████████▌ | 6/7 [00:00<00:00, 12.20it/s]INFO:root:Annotating 0 examples with alpaca_eval_vllm_llama3_70b_fn
+INFO:root:Saving all annotations to scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+INFO:root:Loading all annotations from scripts/alpaca_eval_vllm_llama3_70b_fn/annotations_seed0_configs.json.
+Annotation chunk: 100%|██████████| 7/7 [00:00<00:00, 12.51it/s]
+INFO:root:Saving all results to .
+INFO:root:Not saving the result to the cached leaderboard because precomputed_leaderboard is not a path but <class 'NoneType'>.
