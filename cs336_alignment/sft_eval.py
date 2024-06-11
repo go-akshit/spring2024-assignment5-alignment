@@ -144,9 +144,17 @@ def get_gsm8k_prompts(file_path):
             answer = question_answer_pair['answer']
             correct_answer = parse_gsm8k_response(answer)   
             instruction = (f"{question}\nAnswer:")
-
-            prompt = f"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:"
-            
+            prompt = (f"# Instruction\nBelow is a list of conversations between a human and an AI assistant (you).\n"
+                        f"Users place their queries under \"# Query:\", and your responses are under \"# Answer:\".\n"
+                        f"You are a helpful, respectful, and honest assistant.\n"
+                        f"You should always answer as helpfully as possible while ensuring safety.\n"
+                        f"Your answers should be well-structured and provide detailed information. They should also have an engaging tone.\n"
+                        f"Your responses must not contain any fake, harmful, unethical, racist, sexist, toxic,dangerous, or illegal content, even if it may be helpful.\n"
+                        f"Your response must be socially responsible, and thus you can reject to answer some controversial topics.\n"
+                        f"# Query:\n"
+                        f"```{instruction}```\n"
+                        f"# Answer:\n"
+                        f"```")
             prompts.append(prompt)
             correct_answers.append(correct_answer)
     return prompts, correct_answers
@@ -271,8 +279,8 @@ def main():
     dir_path = './data/mmlu/test'
     model_name = 'base'
     gsm8k_file_path = './data/gsm8k/test.jsonl'
-    evaluate_performance_mmlu(dir_path)
-    #evaluate_performance_gsm8k(gsm8k_file_path)
+    #evaluate_performance_mmlu(dir_path)
+    evaluate_performance_gsm8k(gsm8k_file_path)
 
     #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl', model_name)
 
