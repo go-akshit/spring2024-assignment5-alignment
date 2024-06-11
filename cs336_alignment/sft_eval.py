@@ -159,7 +159,7 @@ def get_gsm8k_prompts(file_path):
             correct_answers.append(correct_answer)
     return prompts, correct_answers
 
-def alpaca_eval_predictions(file_path, model_name):
+def alpaca_eval_predictions(file_path):
     prompts, instr_datasets = get_alpaca_eval_prompts(file_path)
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
     
@@ -278,9 +278,9 @@ def main():
     model_name = 'base'
     gsm8k_file_path = './data/gsm8k/test.jsonl'
     #evaluate_performance_mmlu(dir_path)
-    evaluate_performance_gsm8k(gsm8k_file_path)
+    #evaluate_performance_gsm8k(gsm8k_file_path)
 
-    #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl', model_name)
+    alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl')
 
     #sst_baseline_predictions('./data/simple_safety_tests/simple_safety_tests.csv', model_name)
 
