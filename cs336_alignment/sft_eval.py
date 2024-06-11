@@ -215,13 +215,11 @@ def get_alpaca_eval_prompts(file_path):
     return prompts, instr_datasets
 
 
-def sst_baseline_predictions(file_path, model_name):
+def sst_sft_predictions(file_path):
     prompts, instructions = get_sst_baseline_prompts(file_path)
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
-    if model_name == 'base':
-        llm = LLM(model='/data/Meta-Llama-3-8B')
-    elif model_name == 'instruct':
-        llm = LLM(model='/home/shared/Meta-Llama-3-70B-Instruct')
+    
+    llm = LLM(model='./finetuning_output')
     
     start_time = timeit.default_timer()
     outputs = llm.generate(prompts, sampling_params)
@@ -240,10 +238,10 @@ def sst_baseline_predictions(file_path, model_name):
     json_output = {
         "throughput": throughput,
     }
-    with open('sst_baseline.json', 'w') as f:
+    with open('sst_sft.json', 'w') as f:
         json.dump(json_output, f, indent=4)
 
-    with open("sst_baseline_predictions.jsonl", "w") as file:
+    with open("sst_sft_predictions.jsonl", "w") as file:
         for entry in eval_set:
             json_line = json.dumps(entry)  # Convert dictionary to JSON string
             file.write(json_line + '\n')
@@ -280,9 +278,9 @@ def main():
     #evaluate_performance_mmlu(dir_path)
     #evaluate_performance_gsm8k(gsm8k_file_path)
 
-    alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl')
+    #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl')
 
-    #sst_baseline_predictions('./data/simple_safety_tests/simple_safety_tests.csv', model_name)
+    sst_sft_predictions('./data/simple_safety_tests/simple_safety_tests.csv')
 
 
 if __name__ == "__main__":
