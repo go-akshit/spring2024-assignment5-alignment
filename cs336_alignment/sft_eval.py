@@ -280,8 +280,8 @@ def red_teaming():
     outputs = llm.generate(prompts, sampling_params)
     for output in outputs:
         generated_text = output.outputs[0].text
-        import pdb; pdb.set_trace()
-
+        print(generated_text)
+        
 def main():
     dir_path = './data/mmlu/test'
     model_name = 'base'
