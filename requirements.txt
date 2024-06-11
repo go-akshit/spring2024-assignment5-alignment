@@ -6,3 +6,4 @@ xopen
 tqdm
 wandb
 memory_profiler
+torch==2.2.1
