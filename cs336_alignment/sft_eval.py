@@ -275,7 +275,7 @@ def red_teaming():
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
 
     llm = LLM(model='./finetuning_output')
-    outputs = llm.generate(prompts, sampling_params)
+    output = llm.generate(prompts, sampling_params)
     generated_text = output.outputs[0].text
     import pdb; pdb.set_trace()
 
