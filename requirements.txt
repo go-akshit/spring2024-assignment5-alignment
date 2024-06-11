@@ -4,3 +4,5 @@ transformers
 alpaca_eval @ git+https://github.com/nelson-liu/alpaca_eval.git@forward_kwargs_to_vllm
 xopen
 tqdm
+wandb
+memory_profiler
