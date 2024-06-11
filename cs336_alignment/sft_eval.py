@@ -275,9 +275,10 @@ def red_teaming():
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
 
     llm = LLM(model='./finetuning_output')
-    output = llm.generate(prompts, sampling_params)
-    generated_text = output.outputs[0].text
-    import pdb; pdb.set_trace()
+    outputs = llm.generate(prompts, sampling_params)
+    for output in outputs:
+        generated_text = output.outputs[0].text
+        import pdb; pdb.set_trace()
 
 def main():
     dir_path = './data/mmlu/test'
