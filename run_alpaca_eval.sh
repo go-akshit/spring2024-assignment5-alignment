@@ -4,7 +4,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --time=24:00:00
-#SBATCH --mem=100G
+#SBATCH --mem=80G
 #SBATCH --gpus=2
 #SBATCH --output=alpaca_eval_%j.out
 #SBATCH --error=alpaca_eval_%j.err
