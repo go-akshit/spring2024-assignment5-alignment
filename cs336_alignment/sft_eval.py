@@ -270,6 +270,14 @@ def get_sst_baseline_prompts(file_path):
             instr.append(instruction)
     return prompts, instr
 
+def red_teaming():
+    prompts = [""]
+    sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
+
+    llm = LLM(model='./finetuning_output')
+    outputs = llm.generate(prompts, sampling_params)
+    generated_text = output.outputs[0].text
+    import pdb; pdb.set_trace()
 
 def main():
     dir_path = './data/mmlu/test'
@@ -280,8 +288,8 @@ def main():
 
     #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl')
 
-    sst_sft_predictions('./data/simple_safety_tests/simple_safety_tests.csv')
-
+    #sst_sft_predictions('./data/simple_safety_tests/simple_safety_tests.csv')
+    red_teaming()
 
 if __name__ == "__main__":
     main()
