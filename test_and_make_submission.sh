@@ -33,6 +33,7 @@ zip -r "$output_file" . \
     -x '*.json' \
     -x '*.out' \
     -x '*.err' \
-    -x '.git*'
-
+    -x '.git*' \
+    -x '*wandb*' \
+    -x '*finetuning_output*'
 echo "All files have been compressed into $output_file"
