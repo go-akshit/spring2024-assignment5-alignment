@@ -6,4 +6,5 @@ xopen
 tqdm
 wandb
 memory_profiler
+vllm
 torch
