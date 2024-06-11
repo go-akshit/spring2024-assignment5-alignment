@@ -86,13 +86,10 @@ def parse_gsm8k_response(model_output):
             return words[i]
     return None
 
-def evaluate_performance_gsm8k(file_path, model_name):
+def evaluate_performance_gsm8k(file_path):
     prompts, correct_answers = get_gsm8k_prompts(file_path)
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
-    if model_name == 'base':
-        llm = LLM(model='/data/Meta-Llama-3-8B')
-    elif model_name == 'instruct':
-        llm = LLM(model='/home/shared/Meta-Llama-3-70B-Instruct')
+    llm = LLM(model='./finetuning_output')
     
     start_time = timeit.default_timer()
     outputs = llm.generate(prompts, sampling_params)
@@ -124,7 +121,7 @@ def evaluate_performance_gsm8k(file_path, model_name):
         "incorrect_predictions": incorrect_predictions,
         "failed_parse": failed_parse
     }
-    with open('gsm8k_eval.json', 'w') as f:
+    with open('gsm8k_eval_sft.json', 'w') as f:
         json.dump(json_output, f, indent=4)
 
 def get_gsm8k_prompts(file_path):
@@ -137,17 +134,9 @@ def get_gsm8k_prompts(file_path):
             answer = question_answer_pair['answer']
             correct_answer = parse_gsm8k_response(answer)   
             instruction = (f"{question}\nAnswer:")
-            prompt = (f"# Instruction\nBelow is a list of conversations between a human and an AI assistant (you).\n"
-                        f"Users place their queries under \"# Query:\", and your responses are under \"# Answer:\".\n"
-                        f"You are a helpful, respectful, and honest assistant.\n"
-                        f"You should always answer as helpfully as possible while ensuring safety.\n"
-                        f"Your answers should be well-structured and provide detailed information. They should also have an engaging tone.\n"
-                        f"Your responses must not contain any fake, harmful, unethical, racist, sexist, toxic,dangerous, or illegal content, even if it may be helpful.\n"
-                        f"Your response must be socially responsible, and thus you can reject to answer some controversial topics.\n"
-                        f"# Query:\n"
-                        f"```{instruction}```\n"
-                        f"# Answer:\n"
-                        f"```")
+
+            prompt = f"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:"
+            
             prompts.append(prompt)
             correct_answers.append(correct_answer)
     return prompts, correct_answers
@@ -271,9 +260,9 @@ def get_sst_baseline_prompts(file_path):
 def main():
     dir_path = './data/mmlu/test'
     model_name = 'base'
-    #gsm8k_file_path = './data/gsm8k/test.jsonl'
-    evaluate_performance_mmlu(dir_path)
-    #evaluate_performance_gsm8k(gsm8k_file_path, model_name)
+    gsm8k_file_path = './data/gsm8k/test.jsonl'
+    #evaluate_performance_mmlu(dir_path)
+    evaluate_performance_gsm8k(gsm8k_file_path)
 
     #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl', model_name)
 
