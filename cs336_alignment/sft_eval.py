@@ -162,10 +162,8 @@ def get_gsm8k_prompts(file_path):
 def alpaca_eval_predictions(file_path, model_name):
     prompts, instr_datasets = get_alpaca_eval_prompts(file_path)
     sampling_params = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=1024, stop=["\n"])
-    if model_name == 'base':
-        llm = LLM(model='/data/Meta-Llama-3-8B')
-    elif model_name == 'instruct':
-        llm = LLM(model='/home/shared/Meta-Llama-3-70B-Instruct')
+    
+    llm = LLM(model='./finetuning_output')
     
     start_time = timeit.default_timer()
     outputs = llm.generate(prompts, sampling_params)
@@ -186,10 +184,10 @@ def alpaca_eval_predictions(file_path, model_name):
 
         "throughput": throughput,
     }
-    with open('alpaca_eval.json', 'w') as f:
+    with open('alpaca_eval_sft.json', 'w') as f:
         json.dump(json_output, f, indent=4)
 
-    with open('alpaca_eval_predictions.json', 'w') as f:
+    with open('alpaca_eval_predictions_sft.json', 'w') as f:
         json.dump(eval_set, f)
 
 def get_alpaca_eval_prompts(file_path):
