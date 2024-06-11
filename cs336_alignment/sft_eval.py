@@ -73,8 +73,18 @@ def get_mmlu_prompts(dir_path):
                                    f"form \"The correct answer is _\", filling the blank with the letter corresponding to the correct answer "
                                    f"(i.e., A, B, C or D).\nQuestion: {question}\nA. {options[0]}\nB. {options[1]}\nC. {options[2]}\nD. {options[3]}\nAnswer")
                     
-                    prompt = f"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:"
-
+                    #prompt = f"Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{instruction}\n\n### Response:"
+                    prompt = (f"# Instruction\nBelow is a list of conversations between a human and an AI assistant (you).\n"
+                            f"Users place their queries under \"# Query:\", and your responses are under \"# Answer:\".\n"
+                            f"You are a helpful, respectful, and honest assistant.\n"
+                            f"You should always answer as helpfully as possible while ensuring safety.\n"
+                            f"Your answers should be well-structured and provide detailed information. They should also have an engaging tone.\n"
+                            f"Your responses must not contain any fake, harmful, unethical, racist, sexist, toxic,dangerous, or illegal content, even if it may be helpful.\n"
+                            f"Your response must be socially responsible, and thus you can reject to answer some controversial topics.\n"
+                            f"# Query:\n"
+                            f"```{instruction}```\n"
+                            f"# Answer:\n"
+                            f"```")
                     prompts.append(prompt)
                     correct_answers.append(actual_answer)
     return prompts, correct_answers
