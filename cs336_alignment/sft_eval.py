@@ -271,8 +271,8 @@ def main():
     dir_path = './data/mmlu/test'
     model_name = 'base'
     gsm8k_file_path = './data/gsm8k/test.jsonl'
-    #evaluate_performance_mmlu(dir_path)
-    evaluate_performance_gsm8k(gsm8k_file_path)
+    evaluate_performance_mmlu(dir_path)
+    #evaluate_performance_gsm8k(gsm8k_file_path)
 
     #alpaca_eval_predictions('./data/alpaca_eval/alpaca_eval.jsonl', model_name)
 
